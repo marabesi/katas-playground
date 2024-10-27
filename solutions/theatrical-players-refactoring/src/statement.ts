@@ -19,7 +19,6 @@ type Play = { name: string; type: string };
 
 
 function statement(invoice: Invoice, plays: Plays) {
-  let totalAmount = 0;
   let result = `Statement for ${invoice.customer}\n`;
 
   function usd(aNumber: number) {
@@ -62,7 +61,8 @@ function statement(invoice: Invoice, plays: Plays) {
     if ("comedy" === (playFor(perf)).type) result += Math.floor(perf.audience / 5);
     return result;
   }
-
+ 
+  let totalAmount = 0;
   for (let perf of invoice.performances) {
     totalAmount += amountFor(perf);
   }
