@@ -30,7 +30,7 @@ type StatementData = {
 
 function statement(invoice: Invoice, plays: Plays): string {
 
-  function createStatement() {
+  function createStatement(invoice: Invoice, plays: Plays) {
     function playFor(aPerformance: Performance): Play {
       return plays[aPerformance.playID];
     }
@@ -119,7 +119,7 @@ function statement(invoice: Invoice, plays: Plays): string {
   }
 
 
-  return renderPlainText(createStatement());
+  return renderPlainText(createStatement(invoice, plays));
 }
 
 export { statement };
