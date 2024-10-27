@@ -64,10 +64,12 @@ function statement(invoice: Invoice, plays: Plays) {
   }
 
   for (let perf of invoice.performances) {
-    result += ` ${(playFor(perf)).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
     totalAmount += amountFor(perf);
   }
-  
+
+  for (let perf of invoice.performances) {
+    result += ` ${(playFor(perf)).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+  }
 
   result += `Amount owed is ${usd(totalAmount / 100)}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
