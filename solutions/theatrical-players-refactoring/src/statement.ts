@@ -88,7 +88,7 @@ function statement(invoice: Invoice, plays: Plays): string {
     return thisAmount;
   }
 
-  function renderPlainText(data: any, plays: Plays): string {
+  function renderPlainText(data: any): string {
     let result = `Statement for ${data.customer}\n`;
 
     function usd(aNumber: number) {
@@ -118,7 +118,7 @@ function statement(invoice: Invoice, plays: Plays): string {
     return result;
   }
 
-  return renderPlainText(createStatement(), plays);
+  return renderPlainText(createStatement());
 }
 
 export { statement };
