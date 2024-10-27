@@ -18,11 +18,14 @@ type Invoice = {
 type Play = { name: string; type: string };
 
 function statement(invoice: Invoice, plays: Plays): string {
-  return renderPlainText(invoice, plays);
+  const statementDAta: any = {};
+  statementDAta.customer = invoice.customer;
+  statementDAta.performances = invoice.performances;
+  return renderPlainText(statementDAta, plays);
 }
 
-function renderPlainText(invoice: Invoice, plays: Plays): string {
-  let result = `Statement for ${invoice.customer}\n`;
+function renderPlainText(data: any, plays: Plays): string {
+  let result = `Statement for ${data.customer}\n`;
 
   function usd(aNumber: number) {
     return new Intl.NumberFormat("en-US", {
@@ -67,7 +70,7 @@ function renderPlainText(invoice: Invoice, plays: Plays): string {
 
   function totalAmount() {
     let result = 0;
-    for (let perf of invoice.performances) {
+    for (let perf of data.performances) {
       result += amountFor(perf);
     }
     return result;
@@ -75,13 +78,13 @@ function renderPlainText(invoice: Invoice, plays: Plays): string {
 
   function totalVolumeCredits() {
     let result = 0;
-    for (let perf of invoice.performances) {
+    for (let perf of data.performances) {
       result += volumeCreditsFor(perf);
     }
     return result;
   }
  
-  for (let perf of invoice.performances) {
+  for (let perf of data.performances) {
     result += ` ${(playFor(perf)).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
   }
 
