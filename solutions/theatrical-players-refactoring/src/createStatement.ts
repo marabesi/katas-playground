@@ -51,11 +51,11 @@ export function createStatement(invoice: Invoice, plays: Plays) {
   }
 
   function enrichPerformance(aPerformance: Performance): EnrichedPerformance {
-    const result: any = Object.assign({}, aPerformance);
-
-    result.play = playFor(result);
-    result.amount = amountFor(result);
-    result.volumeCredits = volumeCreditsFor(result);
+    const result: EnrichedPerformance = Object.assign({
+      play: playFor(aPerformance),
+      amount: amountFor(aPerformance),
+      volumeCredits: volumeCreditsFor(aPerformance),
+    }, aPerformance);
 
     return result;
   }
@@ -69,5 +69,6 @@ export function createStatement(invoice: Invoice, plays: Plays) {
   statementData.performances = invoice.performances.map(enrichPerformance);
   statementData.totalAmount = totalAmount(statementData);
   statementData.totalVolumeCredits = totalVolumeCredits(statementData);
+
   return statementData;
 }
