@@ -17,8 +17,11 @@ type Invoice = {
 
 type Play = { name: string; type: string };
 
+function statement(invoice: Invoice, plays: Plays): string {
+  return renderPlainText(invoice, plays);
+}
 
-function statement(invoice: Invoice, plays: Plays) {
+function renderPlainText(invoice: Invoice, plays: Plays): string {
   let result = `Statement for ${invoice.customer}\n`;
 
   function usd(aNumber: number) {
@@ -61,14 +64,6 @@ function statement(invoice: Invoice, plays: Plays) {
     if ("comedy" === (playFor(perf)).type) result += Math.floor(perf.audience / 5);
     return result;
   }
- 
-  for (let perf of invoice.performances) {
-    result += ` ${(playFor(perf)).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
-  }
-
-  result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
-  result += `You earned ${totalVolumeCredits()} credits\n`;
-  return result;
 
   function totalAmount() {
     let result = 0;
@@ -85,6 +80,14 @@ function statement(invoice: Invoice, plays: Plays) {
     }
     return result;
   }
+ 
+  for (let perf of invoice.performances) {
+    result += ` ${(playFor(perf)).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+  }
+
+  result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
+  result += `You earned ${totalVolumeCredits()} credits\n`;
+  return result;
 }
 
 export { statement };
