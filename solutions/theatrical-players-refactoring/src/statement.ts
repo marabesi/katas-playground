@@ -17,10 +17,22 @@ type Invoice = {
 
 type Play = { name: string; type: string };
 
+interface EnrichedPerformance extends Performance {
+  play: Play;
+};
+
 function statement(invoice: Invoice, plays: Plays): string {
+  function playFor(aPerformance: Performance): Play {
+    return plays[aPerformance.playID];
+  }
+  function enrichPerformance(aPerformance: Performance): EnrichedPerformance {
+    const result: any = Object.assign({}, aPerformance);
+    result.play = playFor(result)
+    return result;
+  }
   const statementDAta: any = {};
   statementDAta.customer = invoice.customer;
-  statementDAta.performances = invoice.performances;
+  statementDAta.performances = invoice.performances.map(enrichPerformance);
   return renderPlainText(statementDAta, plays);
 }
 
@@ -38,7 +50,7 @@ function renderPlainText(data: any, plays: Plays): string {
   function playFor(aPerformance: Performance): Play {
     return plays[aPerformance.playID];
   }
-  
+
   function amountFor(aPerformance: Performance) {
     let thisAmount = 0;
     switch (playFor(aPerformance).type) {
@@ -60,7 +72,7 @@ function renderPlainText(data: any, plays: Plays): string {
     }
     return thisAmount;
   }
- 
+
   function volumeCreditsFor(perf: Performance) {
     let result = 0;
     result += Math.max(perf.audience - 30, 0);
@@ -83,7 +95,7 @@ function renderPlainText(data: any, plays: Plays): string {
     }
     return result;
   }
- 
+
   for (let perf of data.performances) {
     result += ` ${(playFor(perf)).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
   }
@@ -94,3 +106,4 @@ function renderPlainText(data: any, plays: Plays): string {
 }
 
 export { statement };
+
