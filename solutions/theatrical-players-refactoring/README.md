@@ -11,7 +11,7 @@ and webstorm and comparing the autoated refactorings that each one of them offer
 | Replace temp with query | ❌ (Manual) | ❌ (Manual) |
 | Inline - position the cursor in the variable that you want to inline | ✅  Cmd + .  |  cmd + optoin + n |
 | Change function declaration | ❌ (with abracadabra ✅ cmd + .)  | ✅ cmd + f6 |
-| | | |
+| Rename | ✅ F2 takes into account context, cmd + f2 changes all ocurrences | ✅ shift + f6 |
 | | | |
 | | | |
 | | | |
