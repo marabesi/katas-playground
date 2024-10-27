@@ -31,16 +31,16 @@ export type StatementData = {
   totalVolumeCredits?: number;
 };
 
+function usd(aNumber: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(aNumber);
+}
+
 function renderPlainText(data: StatementData): string {
   let result = `Statement for ${data.customer}\n`;
-
-  function usd(aNumber: number) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-    }).format(aNumber);
-  }
 
   for (let perf of data.performances) {
     result += ` ${perf.play.name}: ${usd(perf.amount / 100)} (${perf.audience} seats)\n`;
