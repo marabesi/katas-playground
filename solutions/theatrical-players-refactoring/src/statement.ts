@@ -27,6 +27,10 @@ function statement(invoice: Invoice, plays: Plays) {
     currency: "USD",
     minimumFractionDigits: 2,
   }).format;
+
+  function playFor(aPerformance: Performance) {
+    return plays[aPerformance.playID];
+  }
   
   function amountFor(play: Play, aPerformance: Performance) {
     let thisAmount = 0;
@@ -48,10 +52,6 @@ function statement(invoice: Invoice, plays: Plays) {
         throw new Error(`unknown type: ${play.type}`);
     }
     return thisAmount;
-  }
-
-  function playFor(aPerformance: Performance) {
-    return plays[aPerformance.playID];
   }
 
   for (let perf of invoice.performances) {
