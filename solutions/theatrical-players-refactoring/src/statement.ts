@@ -29,11 +29,16 @@ type StatementData = {
 };
 
 function statement(invoice: Invoice, plays: Plays): string {
-  const statementData: StatementData = {};
-  statementData.customer = invoice.customer;
-  statementData.performances = invoice.performances.map(enrichPerformance);
-  statementData.totalAmount = totalAmount(statementData);
-  statementData.totalVolumeCredits = totalVolumeCredits(statementData); 
+  const statementData: StatementData = createStatement(); 
+
+  function createStatement() {
+    const statementData: StatementData = {};
+    statementData.customer = invoice.customer;
+    statementData.performances = invoice.performances.map(enrichPerformance);
+    statementData.totalAmount = totalAmount(statementData);
+    statementData.totalVolumeCredits = totalVolumeCredits(statementData);
+    return statementData;
+  }
 
   function playFor(aPerformance: Performance): Play {
     return plays[aPerformance.playID];
