@@ -29,7 +29,6 @@ type StatementData = {
 };
 
 function statement(invoice: Invoice, plays: Plays): string {
-  const statementData: StatementData = createStatement(); 
 
   function createStatement() {
     const statementData: StatementData = {};
@@ -119,7 +118,7 @@ function statement(invoice: Invoice, plays: Plays): string {
     return result;
   }
 
-  return renderPlainText(statementData, plays);
+  return renderPlainText(createStatement(), plays);
 }
 
 export { statement };
