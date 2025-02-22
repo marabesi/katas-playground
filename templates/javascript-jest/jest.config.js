@@ -3,9 +3,9 @@ module.exports = {
     '<rootDir>/'
   ],
   'testMatch': [
-    '**/?(*.)+(spec|test).+(ts)'
+    '**/?(*.)+(spec|test).+(js)'
   ],
   transform: {
-    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.js?$': 'babel-jest',
   },
 };
