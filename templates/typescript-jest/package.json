@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "test": "jest",
+    "e2e": "cypress run",
     "build": "tsc",
     "dev": "tsc -w",
     "lint": "tslint src/**/*.ts"
