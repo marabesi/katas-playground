@@ -1,5 +1,9 @@
 # Refactoring
 
+This kata is based on Refactoring book. It mimics the code used and might be used to follow up the reading.
+
+## Refactoring moves
+
 In this file I will keep track of the refactorings used to reach the final solution for the kata. I am using vscode
 and webstorm and comparing the autoated refactorings that each one of them offers.
 
