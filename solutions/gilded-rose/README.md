@@ -4,6 +4,8 @@ This is the Gilded Rose kata in TypeScript.
 
 https://kata-log.rocks/gilded-rose-kata
 
+<img width="1536" height="1024" alt="ChatGPT generated image aid" src="https://github.com/user-attachments/assets/99f313df-b114-43e8-8c07-64a9972f2539" />
+
 ## Getting started
 
 Install dependencies
