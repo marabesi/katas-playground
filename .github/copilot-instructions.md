@@ -1,0 +1,4 @@
+The purpose of this repository is to provide templates and solutions for katas that are related with: TDD, refactoring, code design, clean code, SOLID principles, design patterns and more. The katas are organized in folders based on the topic they cover. Each folder contains a README.md file that describes the kata and provides instructions on how to solve it.
+
+- The solutions are provided in separate files for each language (javascript, typescript and kotlin) under the folder solutions. Subfolders follow a pattern of kata solved, for example: solutions/bags, solutions/bank, etc.
+- The templates are provided under the folder templates. Each template is a starting point for solving a kata, and it includes the necessary files and structure to get started. However, the templates are restricted to javascript, typescript and kotlin. For javascript and typescript, they are a mix of jest and vitest setup.
